@@ -8,6 +8,8 @@
  (public_name usuba_lib)
  ; external dependencies
  (libraries unix str usuba_pp sexplib ppx_sexp_conv menhir)
+ (modules_without_implementation config)
+
  ; Specifying modules one by one because we don't want to include them all
  (modules
   prelude

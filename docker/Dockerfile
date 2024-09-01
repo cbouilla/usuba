@@ -23,12 +23,24 @@ ENV HOME=/home/eval
 WORKDIR /home/eval
 
 # Setup opam
-RUN opam init --disable-sandboxing -a -y && \
-    opam install dune
+RUN opam init --disable-sandboxing -a -y && opam install dune
+
+RUN opam install menhir -y
+RUN opam install alcotest -y
+RUN opam install sexplib -y
+
 
 # Bring up Usuba
 RUN git clone --recurse-submodules https://github.com/usubalang/usuba.git
-RUN git clone --recurse-submodules https://github.com/usubalang/benchmarks.git
+# RUN git clone --recurse-submodules https://github.com/usubalang/benchmarks.git
+
+RUN opam install ppx_sexp_conv -y
+RUN opam install ppx_inline_test -y
+RUN opam install ppx_deriving -y
+RUN opam install ppx_sexp_conv -y
+  
+
+
 RUN cd usuba && opam exec --  ./configure
 RUN cd usuba && opam exec -- dune build
 
