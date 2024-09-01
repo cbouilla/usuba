@@ -31,7 +31,7 @@ RUN opam install sexplib -y
 
 
 # Bring up Usuba
-RUN git clone --recurse-submodules https://github.com/usubalang/usuba.git
+RUN git clone --recurse-submodules https://github.com/cbouilla/usuba.git
 # RUN git clone --recurse-submodules https://github.com/usubalang/benchmarks.git
 
 RUN opam install ppx_sexp_conv -y
